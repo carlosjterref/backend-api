@@ -3,9 +3,12 @@ import pool from '../config/db.js';
 // Obtener todos los usuarios
 export const listarUsuarios = async (req, res) => {
   try {
+    console.log("Consultando usuarios...");//------archivo temporal
+
     const [rows] = await pool.query('SELECT * FROM usuarios');
     res.json(rows);
   } catch (error) {
+    console.error("Error en listarUsuarios:", error);//------archivo temporal
     res.status(500).json({ error: error.message });
   }
 };
